@@ -1,0 +1,14 @@
+{
+  "name": "puppet-bind",
+  "version": "0.1.0",
+  "author": "homer (hyfing@gmail.com)",
+  "summary": "Puppet module to manage bind dns server.",
+  "license": "BSD",
+  "source": "https://github.com/yfhong/puppet-bind.git",
+  "project_page": "https://github.com/yfhong/puppet-bind",
+  "issues_url": "https://github.com/yfhong/puppet-bind/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+

@@ -1,0 +1,41 @@
+
+view "<%= @name %>" {
+<%- if @match_clients and @match_clients != '' -%>
+	match-clients {
+<%-   Array(@match_clients).each do |match_client| -%>
+		<%= match_client %>;
+<%-   end -%>
+	};
+<%- end -%>
+<%- if @match_destinations and @match_destinations != '' -%>
+	match-destinations {
+<%-   Array(@match_destinations).each do |match_destination| -%>
+		<%= match_destination %>;
+<%-   end -%>
+	};
+<%- end -%>
+	recursion <%= @recursion ? 'yes' : 'no' %>;
+<%- if @recursion -%>
+<%-   if @recursion_match_clients and @recursion_match_clients != '' -%>
+	allow-recursion {
+<%-     Array(@recursion_match_clients).each do |match_client| -%>
+		<%= match_client %>;
+<%-     end -%>
+	};
+<%-   end -%>
+<%-   if @recursion_match_destinations and @recursion_match_destinations != '' -%>
+	allow-recursion-on {
+<%-     Array(@recursion_match_destinations).each do |match_destination| -%>
+		<%= match_destination %>;
+<%-     end -%>
+	};
+<%-   end -%>
+<%- end -%>
+<%- if scope.lookupvar('osfamily') == 'Debian' -%>
+	include "<%= @confdir %>/named.conf.default-zones";
+<%- end -%>
+
+<%- Array(@zones).each do |zone| -%>
+	include "<%= @confdir %>/zones/<%= zone %>.conf";
+<%- end -%>
+};

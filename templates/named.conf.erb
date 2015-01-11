@@ -1,0 +1,9 @@
+# This file is managed by puppet - changes will be lost
+# do customization in "<%= @confdir %>/named.conf.local"
+include "<%= @confdir %>/named.conf.acls";
+include "<%= @confdir %>/named.conf.keys";
+include "<%= @confdir %>/named.conf.options";
+include "<%= @confdir %>/named.conf.views";
+
+# do customization here.
+include "<%= @confdir %>/named.conf.local";
